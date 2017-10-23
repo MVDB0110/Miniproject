@@ -1,15 +1,8 @@
 from tkinter import *
-from ns_api import opvragen
+from ns_api import informatie
 
-def reisinformatie():
-    info = opvragen()
-    reisinfo = "{:35}{:20}{:30}{:3}\n".format("Bestemming", "Tijd van vertrek", "Soort trein", "Treinspoor")
-    for trein in info['ActueleVertrekTijden']['VertrekkendeTrein']:
-        vertrektijd = trein[ 'VertrekTijd' ].split('T')
-        vertrektijd = vertrektijd[1]
-        vertrektijd = vertrektijd.split('+')
-        vertrektijd = vertrektijd[0]
-        reisinfo +="{:35}{:20}{:30}{:8}\n".format(trein['EindBestemming'], vertrektijd, trein['TreinSoort'], trein['VertrekSpoor']['#text'])
+def tkinter_reis_label():
+    reisinfo = informatie()
     reislabel = Text(root, width=len(reisinfo.split('\n')[0])+1, height=reisinfo.count('\n'), background=background, highlightbackground='black')
     reislabel.pack()
     reislabel.insert(END,reisinfo)
@@ -59,7 +52,7 @@ koopovchip.pack(side=LEFT)
 buitenland = Button(knoppen, text='Ik wil naar het buitenland', highlightbackground=background, background='blue')
 buitenland.pack(side=LEFT)
 
-reisinfo = Button(knoppen, text='Ik wil de reisinformatie van het aangegeven station', highlightbackground=background, background='blue', command=reisinformatie)
+reisinfo = Button(knoppen, text='Ik wil de reisinformatie van het aangegeven station', highlightbackground=background, background='blue', command=tkinter_reis_label)
 reisinfo.pack(side=LEFT)
 
 root.mainloop()

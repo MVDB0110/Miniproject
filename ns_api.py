@@ -30,3 +30,14 @@ def opvragen():
             return vertrektijden
     except:
         print("Kan bestand niet openen.")
+
+def informatie():
+    info = opvragen()
+    reisinfo = "{:35}{:20}{:30}{:3}\n".format("Bestemming", "Tijd van vertrek", "Soort trein", "Treinspoor")
+    for trein in info['ActueleVertrekTijden']['VertrekkendeTrein']:
+        vertrektijd = trein[ 'VertrekTijd' ].split('T')
+        vertrektijd = vertrektijd[1]
+        vertrektijd = vertrektijd.split('+')
+        vertrektijd = vertrektijd[0]
+        reisinfo +="{:35}{:20}{:30}{:8}\n".format(trein['EindBestemming'], vertrektijd, trein['TreinSoort'], trein['VertrekSpoor']['#text'])
+    return reisinfo
