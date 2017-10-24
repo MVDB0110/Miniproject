@@ -6,7 +6,7 @@ def tkinter_reis_label():
     stationsnaam = station.get()
     if stationsnaam.lower() in lijst():
         ns_api(stationsnaam)
-        home.pack(side=LEFT)
+        home.pack(side=LEFT,padx=10,pady=10)
         welkom.pack_forget()
         knoppen.pack_forget()
         reislabel.pack()
@@ -65,7 +65,7 @@ reislabel.insert(END, reisinfo)
 reislabel.config(state=DISABLED)
 #Reislabel creeren
 
-home = Button(header,text='back',height=buttonheight,width=buttonwidth,command=back,highlightbackground=backgroundknop)
+home = Button(header,text='back',height=buttonheight,width=buttonwidth,command=back,highlightbackground=backgroundknop,background=background)
 #Home button
 
 welkom = Label(master=root,text='Welkom bij NS',foreground='blue',font=('Verdana',50,'bold italic'),background=background)
