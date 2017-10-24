@@ -11,12 +11,10 @@ def lijst():
         for station in ns_response['Stations']['Station']:
             if station['Land'] == 'NL':
                 stations.append(station['Namen']['Kort'].lower())
-                stations.append(station[ 'Namen' ][ 'Middel' ].lower())
-                stations.append(station[ 'Namen' ][ 'Lang' ].lower())
+                stations.append(station['Namen']['Middel'].lower())
+                stations.append(station['Namen']['Lang'].lower())
         stations.sort()
         return stations
 
     except:
         print("Kan niet verbinden met de NS")
-
-lijst()

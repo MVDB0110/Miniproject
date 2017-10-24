@@ -13,7 +13,7 @@ def tkinter_reis_label():
     else:
         station.insert(0, "Dit station kan niet worden gevonden in de database.")
 
-def homescreen():
+def init():
     welkom.pack(pady=50)
     knoppen.pack(padx=100, pady=100, side=BOTTOM)
     ams.pack(side=LEFT)
@@ -36,55 +36,58 @@ def back():
     station.pack(side=RIGHT, padx=10, pady=10)
 
 root = Tk()
-
 root.geometry(str(root.winfo_screenwidth())+"x"+str(root.winfo_screenheight()))
 root.title("NS Reisinformatie")
 root.configure(bg='yellow')
+#Settings van het mainframe
 
 background = 'yellow'
 backgroundknop = 'blue'
-
 reisinfo = informatie()
-reislabel = Text(root, width=len(reisinfo.split('\n')[ 0 ]) + 1, height=(reisinfo.count('\n') + 1),background=background, highlightbackground='black')
-reislabel.insert(END, reisinfo)
-reislabel.config(state=DISABLED)
-
-header = Frame(root,bg='blue')
-header.pack(side=TOP, fill=X)
-
-home = Button(header,text='Back',highlightbackground=backgroundknop,command=back)
-
-welkom = Label(master=root,
-               text='Welkom bij NS',
-               foreground='blue',
-               font=('Verdana',50,'bold italic'),
-               background=background)
-
-station = Entry(header, width=30, bg='white', highlightbackground='blue')
-station.insert(0,'Vul hier een stationnaam in.')
+foto = PhotoImage(file='nedvlag.gif')
+buttonheight = 5
+buttonwidth = 20
+#Config variabele
 
 bottom = Frame(root,bg='blue',)
 bottom.pack(side=BOTTOM,fill=X)
+#Bottom container
 
-foto = PhotoImage(file='nedvlag.gif')
+header = Frame(root,bg='blue')
+header.pack(side=TOP, fill=X)
+#Header container
+
+knoppen = Frame(master=root, background=background)
+#Button container
+
+reislabel = Text(root, width=len(reisinfo.split('\n')[ 0 ]) + 1, height=(reisinfo.count('\n') + 1),background=background, highlightbackground='black')
+reislabel.insert(END, reisinfo)
+reislabel.config(state=DISABLED)
+#Reislabel creeren
+
+home = Button(header,text='back',height=buttonheight,width=buttonwidth,command=back,highlightbackground=backgroundknop)
+#Home button
+
+welkom = Label(master=root,text='Welkom bij NS',foreground='blue',font=('Verdana',50,'bold italic'),background=background)
+#NS tekst label
+
+station = Entry(header, width=30, bg='white', highlightbackground='blue')
+station.insert(0,'Vul hier een stationnaam in.')
+#Station entry
+
 foto = foto.subsample(3,3)
 nedvlag = Label(bottom,image=foto,background='blue')
 nedvlag.image = foto
 nedvlag.pack(side=LEFT,padx=10,pady=10)
+#Nederlandse vlag foto label
 
+ams = Button(knoppen, text='Ik wil naar Amsterdam',height=buttonheight,width=buttonwidth ,highlightbackground=background, background='blue')
+loskaartje = Button(knoppen, text='Ik wil een los kaartje kopen',height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
+koopovchip = Button(knoppen, text='Kopen OV-chipkaart',height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
+buitenland = Button(knoppen, text='Ik wil naar het buitenland',height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
+reisinfo = Button(knoppen, text='Ik wil de reisinformatie van het aangegeven station',height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue', command=tkinter_reis_label)
+#Buttons creeeren
 
-knoppen = Frame(master=root, background=background)
-
-ams = Button(knoppen, text='Ik wil naar Amsterdam', highlightbackground=background, background='blue')
-
-loskaartje = Button(knoppen, text='Ik wil een los kaartje kopen', highlightbackground=background, background='blue')
-
-koopovchip = Button(knoppen, text='Kopen OV-chipkaart', highlightbackground=background, background='blue')
-
-buitenland = Button(knoppen, text='Ik wil naar het buitenland', highlightbackground=background, background='blue')
-
-reisinfo = Button(knoppen, text='Ik wil de reisinformatie van het aangegeven station', highlightbackground=background, background='blue', command=tkinter_reis_label)
-
-homescreen()
-
+init()
 root.mainloop()
+#Initialize
