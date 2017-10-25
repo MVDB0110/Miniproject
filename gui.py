@@ -5,10 +5,15 @@ from stationlijst import *
 def tkinter_reis_label():
     stationsnaam = station.get()
     if stationsnaam.lower() in lijst():
+        global reislabel
+        reislabel = Text(root, width=100, height=50, background=background, highlightbackground='black')
         ns_api(stationsnaam)
+        reisinfo = informatie()
         home.pack(side=LEFT,padx=10,pady=10)
         welkom.pack_forget()
         knoppen.pack_forget()
+        reislabel.insert(END, reisinfo)
+        reislabel.config(state=DISABLED)
         reislabel.pack()
     else:
         station.insert(0, "Dit station kan niet worden gevonden in de database.")
@@ -24,8 +29,9 @@ def init():
     station.pack(side=RIGHT, padx=10, pady=10)
 
 def back():
+    global reislabel
     home.pack_forget()
-    reislabel.pack_forget()
+    reislabel.destroy()
     welkom.pack(pady=50)
     knoppen.pack(padx=100, pady=100, side=BOTTOM)
     ams.pack(side=LEFT)
@@ -43,7 +49,6 @@ root.configure(bg='yellow')
 
 background = 'yellow'
 backgroundknop = 'blue'
-reisinfo = informatie()
 foto = PhotoImage(file='nedvlag.gif')
 buttonheight = 5
 buttonwidth = 20
@@ -60,9 +65,7 @@ header.pack(side=TOP, fill=X)
 knoppen = Frame(master=root, background=background)
 #Button container
 
-reislabel = Text(root, width=len(reisinfo.split('\n')[ 0 ]) + 1, height=(reisinfo.count('\n') + 1),background=background, highlightbackground='black')
-reislabel.insert(END, reisinfo)
-reislabel.config(state=DISABLED)
+reislabel = Text(root, width=100, height=50,background=background, highlightbackground='black')
 #Reislabel creeren
 
 home = Button(header,text='back',height=buttonheight,width=buttonwidth,command=back,highlightbackground=backgroundknop,background=background)

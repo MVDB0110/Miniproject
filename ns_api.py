@@ -20,7 +20,6 @@ def ns_api(station):
 
     except:
         print("Kan niet verbinden met de NS")
-
     schrijven(ns_response)
 
 def opvragen():
@@ -29,7 +28,7 @@ def opvragen():
             vertrektijden = xmltodict.parse(station.read())
             return vertrektijden
     except:
-        print("Kan bestand niet openen.")
+        return "Kan bestand niet openen."
 
 def informatie():
     info = opvragen()
