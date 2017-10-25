@@ -8,12 +8,16 @@ def lijst():
         ns_url = 'http://webservices.ns.nl/ns-api-stations-v2'
         ns_response = requests.get(ns_url, auth=ns_inlog_gegevens)
         ns_response = xmltodict.parse(ns_response.text)
+
         for station in ns_response['Stations']['Station']:
             if station['Land'] == 'NL':
                 stations.append(station['Namen']['Kort'].lower())
                 stations.append(station['Namen']['Middel'].lower())
                 stations.append(station['Namen']['Lang'].lower())
+
         stations.sort()
+        stations = set(stations)
+        stations = list(stations)
         return stations
 
     except:
