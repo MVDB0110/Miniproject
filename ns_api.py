@@ -38,5 +38,9 @@ def informatie():
         vertrektijd = vertrektijd[1]
         vertrektijd = vertrektijd.split('+')
         vertrektijd = vertrektijd[0]
-        reisinfo +="{:35}{:20}{:30}{:8}\n".format(trein['EindBestemming'], vertrektijd, trein['TreinSoort'], trein['VertrekSpoor']['#text'])
+        try:
+            vertrekspoor = trein['VertrekSpoor']['#text']
+        except:
+            vertrekspoor = "niet bekend"
+        reisinfo +="{:35}{:20}{:30}{:8}\n".format(trein['EindBestemming'], vertrektijd, trein['TreinSoort'], vertrekspoor)
     return reisinfo

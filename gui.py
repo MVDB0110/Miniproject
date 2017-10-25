@@ -51,14 +51,14 @@ background = 'yellow'
 backgroundknop = 'blue'
 foto = PhotoImage(file='nedvlag.gif')
 buttonheight = 5
-buttonwidth = 20
+buttonwidth = 30
 #Config variabele
 
 bottom = Frame(root,bg='blue',)
 bottom.pack(side=BOTTOM,fill=X)
 #Bottom container
 
-header = Frame(root,bg='blue')
+header = Frame(root,bg='blue',height=20)
 header.pack(side=TOP, fill=X)
 #Header container
 
