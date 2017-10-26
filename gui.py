@@ -116,7 +116,7 @@ ams = Button(knoppen, text='Ik wil naar Amsterdam', foreground=buttontext,height
 loskaartje = Button(knoppen, text='Ik wil een los kaartje kopen', foreground=buttontext,height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
 koopovchip = Button(knoppen, text='Kopen OV-chipkaart', foreground=buttontext,height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
 buitenland = Button(knoppen, text='Ik wil naar het buitenland', foreground=buttontext,height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue')
-reisinfo = Button(knoppen, text='Ik wil de reisinformatie van het aangegeven station', foreground=buttontext,height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue', command=tkinter_reis_label)
+reisinfo = Button(knoppen, text='Reisinformatie van aangegeven station', foreground=buttontext,height=buttonheight,width=buttonwidth , highlightbackground=background, background='blue', command=tkinter_reis_label)
 #Buttons creeeren
 
 init()
