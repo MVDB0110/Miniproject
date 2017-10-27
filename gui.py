@@ -48,7 +48,7 @@ def tkinter_reis_label():
             #Output van search in string zetten
 
             showinfo("Suggestie",suggestie)
-            #Suggesties laten zien op scherm
+            #Suggesties in window laten zien op scherm
 
 def init():
     buttonpadding = 5
