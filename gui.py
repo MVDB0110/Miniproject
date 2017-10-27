@@ -27,27 +27,28 @@ def tkinter_reis_label():
         #Home screen 'hiden'
 
     else:
-        search = list()
-        #Search output lijst creeeren
+        if stationsnaam != '':
+            search = list()
+            #Search output lijst creeeren
 
-        suggestie = "Bedoelde u:\n"
-        #Suggestie string creeeren
+            suggestie = "Bedoelde u:\n"
+            #Suggestie string creeeren
 
-        stations = ".*" + stationsnaam + "*."
-        station.delete(0,END)
-        #Regular Expression 'pattern' en station-entry leegmaken
+            stations = ".*" + stationsnaam + "*."
+            station.delete(0,END)
+            #Regular Expression 'pattern' en station-entry leegmaken
 
-        for stationnamen in stationlijst:
-            if re.search(stations,stationnamen) != None:
-                search.append(re.search(stations,stationnamen).string)
-        #Kijken voor elke naam in stationlijst of deze redelijker wijs overeenkomt met mijn pattern
+            for stationnamen in stationlijst:
+                if re.search(stations,stationnamen) != None:
+                    search.append(re.search(stations,stationnamen).string)
+            #Kijken voor elke naam in stationlijst of deze redelijker wijs overeenkomt met mijn pattern
 
-        for stationnamen in search:
-            suggestie += "- "+stationnamen+"\n"
-        #Output van search in string zetten
+            for stationnamen in search:
+                suggestie += "- "+stationnamen+"\n"
+            #Output van search in string zetten
 
-        showinfo("Suggestie",suggestie)
-        #Suggesties laten zien op scherm
+            showinfo("Suggestie",suggestie)
+            #Suggesties laten zien op scherm
 
 def init():
     buttonpadding = 5
